@@ -1,0 +1,9 @@
+{
+  "name": "ui5.butterflies",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Butterflies museum management app",
+  "scripts": {
+    "start": "ui5 serve -o index.html"
+  }
+}

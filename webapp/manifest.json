@@ -1,0 +1,42 @@
+{
+  "sap.app": {
+    "id": "ui5.butterflies",
+    "applicationVersion": {
+      "version": "1.0.0"
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "ui5.butterflies.view.App",
+      "type": "XML",
+      "async": true
+    },
+    "dependencies": {
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.table": {}
+      }
+    },
+    "config": {
+      "sample": {
+        "stretch": true,
+        "files": [
+          "view/App.view.xml",
+          "view/SumValueDialog.fragment.xml",
+          "controller/App.controller.js",
+          "controller/SumValueDialog.controller.js",
+          "manifest.json"
+        ]
+      }
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "ui5.butterflies.i18n.i18n"
+        }
+      }
+    }
+  }
+}

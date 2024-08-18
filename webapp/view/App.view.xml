@@ -1,0 +1,213 @@
+<mvc:View
+    controllerName="ui5.butterflies.controller.App"
+    xmlns="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.unified"
+    xmlns:c="sap.ui.core"
+    xmlns:m="sap.m"
+    height="100%">
+    
+    <!-- Main application container -->
+    <m:App busy="{appView>/busy}">
+        <m:Page
+            showHeader="false"
+            enableScrolling="false"
+            class="sapUiContentPadding">
+            <m:content>
+                
+                <!-- Table displaying butterfly data -->
+                <Table
+                    id="butterflies-table"
+                    rows="{/butterflies}"
+                    selectionMode="MultiToggle"
+                    ariaLabelledBy="title">
+                    
+                    <!-- Toolbar with actions for table rows -->
+                    <extension>
+                        <m:OverflowToolbar style="Clear">
+                            <!-- Title for the table -->
+                            <m:Title id="title" text="{i18n>tableTitle}"/>
+                            <m:ToolbarSpacer/>
+                            
+                            <!-- Buttons for adding, copying, and deleting rows -->
+                            <m:Button 
+                                icon="sap-icon://add"
+                                tooltip="{i18n>addRowButton}"
+                                press="onCreateDialog"/>
+                            <m:Button 
+                                icon="sap-icon://copy"
+                                tooltip="{i18n>copyRowsButton}"
+                                press="onCopyDialog"/>
+                            <m:Button 
+                                icon="sap-icon://delete"
+                                tooltip="{i18n>deleteRowsButton}"
+                                press="onDeleteDialog"/>
+                            <m:ToolbarSeparator/>
+                            
+                            <!-- Buttons for editing and summing column values -->
+                            <m:Button 
+                                icon="sap-icon://edit"
+                                tooltip="{i18n>editColumnButton}"
+                                press="onEditValueDialog"/>
+                            <m:Button 
+                                icon="sap-icon://add-activity-2"
+                                tooltip="{i18n>sumUpColumnButton}"
+                                press="onSumValueDialog"/>
+                            <m:ToolbarSeparator/> 
+                            
+                            <!-- Inputs and button for freezing table rows/columns -->
+                            <m:Input
+                                id="freezeColumnsInput"
+                                width="12%"
+                                placeholder="{i18n>freezeColsButton}"
+                                tooltip="{i18n>freezeColsButton}"/>
+                            <m:Input
+                                id="freezeRowsInput"
+                                width="12%"
+                                placeholder="{i18n>freezeRowsButton}"
+                                tooltip="{i18n>freezeRowsButton}"/>
+                            <m:Button 
+                                text="{i18n>applyFreezeButtonTitle}" 
+                                tooltip="{i18n>applyFreezeButton}"
+                                press="applyFreeze"/>
+                            <m:ToolbarSeparator/> 
+                            
+                            <!-- Search field and clear button for filtering table rows -->
+                            <m:SearchField
+                                placeholder="{i18n>filterInputPlaceholder}"
+                                value="{filter>/globalFilter}"
+                                search="applyFilters"
+                                width="15rem"/>
+                            <m:Button
+                                icon="sap-icon://decline"
+                                tooltip="{i18n>filterClearButton}"
+                                press="clearAllFilters"/>
+                        </m:OverflowToolbar>
+                    </extension>
+                    
+                    <!-- Define columns for the butterfly data table -->
+                    <columns>
+                        <Column 
+                            width="11rem" 
+                            filterProperty="Name"
+                            sortProperty="Name">
+                            <m:Label text="Name" />
+                            <template>
+                                <m:Text text="{Name}" wrapping="false" />
+                            </template>
+                        </Column>
+                        <!-- Column for the unique identifier of each butterfly -->
+                        <Column 
+                            width="11rem"
+                            filterProperty="GUID">
+                            <m:Label text="Id" />
+                            <template>
+                                <m:Text text="{GUID}"/>
+                            </template>
+                        </Column>
+                        <!-- Additional columns for various butterfly attributes -->
+                        <Column 
+                            width="11rem"
+                            filterProperty="Family"
+                            sortProperty="Family">
+                            <m:Label text="Family" />
+                            <template>
+                                <m:Text text="{Family}" wrapping="false" />
+                            </template>
+                        </Column>
+                        <Column 
+                            width="11rem"
+                            filterProperty="Location"
+                            sortProperty="Location">
+                            <m:Label text="Location" />
+                            <template>
+                                <m:Text text="{Location}" wrapping="false" />
+                            </template>
+                        </Column>
+                        <Column 
+                            width="11rem"
+                            filterProperty="Date"
+                            sortProperty="Date">
+                            <m:Label text="Date" />
+                            <template>
+                                <m:Text text="{Date}" wrapping="false" />
+                            </template>
+                        </Column>
+                        <Column width="11rem"
+                            filterProperty="Wingspan"
+                            sortProperty="Wingspan">
+                            <m:Label text="Wingspan" />
+                            <template>
+                                <m:Text text="{Wingspan}" wrapping="false" />
+                            </template>
+                        </Column>
+                        <Column width="11rem"
+                            filterProperty="Weight"
+                            sortProperty="Weight">
+                            <m:Label text="Weight" />
+                            <template>
+                                <m:Text text="{Weight}" wrapping="false" />
+                            </template>
+                        </Column>
+                        <Column width="11rem"
+                            filterProperty="Price"
+                            sortProperty="Price">
+                            <m:Label text="Price" />
+                            <template>
+                                <m:Text text="{Price}" wrapping="false" />
+                            </template>
+                        </Column>
+                        <Column width="11rem"
+                            filterProperty="Abundance"
+                            sortProperty="Abundance">
+                            <m:Label text="Abundance" />
+                            <template>
+                                <m:Text text="{Abundance}" wrapping="false" />
+                            </template>
+                        </Column>
+                        <Column width="11rem"
+                            filterProperty="Color Rating"
+                            sortProperty="Color Rating">
+                            <m:Label text="Color Rating" />
+                            <template>
+                                <m:Text text="{Color Rating}" wrapping="false" />
+                            </template>
+                        </Column>
+                        <Column width="11rem"
+                            filterProperty="Habitat"
+                            sortProperty="Habitat">
+                            <m:Label text="Habitat" />
+                            <template>
+                                <m:Text text="{Habitat}" wrapping="false" />
+                            </template>
+                        </Column>
+                        <Column width="11rem"
+                            filterProperty="Lifespan"
+                            sortProperty="Lifespan">
+                            <m:Label text="Lifespan" />
+                            <template>
+                                <m:Text text="{Lifespan}" wrapping="false" />
+                            </template>
+                        </Column>
+                        <Column width="11rem"
+                            filterProperty="Migration Pattern"
+                            sortProperty="Migration Pattern">
+                            <m:Label text="Migration Pattern" />
+                            <template>
+                                <m:Text text="{Migration Pattern}" wrapping="false" />
+                            </template>
+                        </Column>
+                        <Column width="11rem"
+                            filterProperty="Threat Level"
+                            sortProperty="Threat Level">
+                            <m:Label text="Threat Level" />
+                            <template>
+                                <m:Text text="{Threat Level}" wrapping="false" />
+                            </template>
+                        </Column>
+                    </columns>
+                </Table>
+            </m:content>
+        </m:Page>
+    </m:App>
+</mvc:View>

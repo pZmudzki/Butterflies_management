@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
+    <Dialog
+        id="editValueDialog"
+        title="{i18n>editDialogTitle}"
+        stretch="false"
+        class="sapUiContentPadding">
+        
+        <VBox>
+            <Label text="{i18n>column}"/>
+            <Select id="selectEditColumn" change="onEditDialogChange">
+                <items>
+                    <core:Item key="GUID" text="GUID"/>
+                    <core:Item key="Name" text="Name"/>
+                    <core:Item key="Family" text="Family"/>
+                    <core:Item key="Location" text="Location"/>
+                    <core:Item key="Date" text="Date"/>
+                    <core:Item key="Wingspan" text="Wingspan"/>
+                    <core:Item key="Weight" text="Weight"/>
+                    <core:Item key="Price" text="Price"/>
+                    <core:Item key="Abundance" text="Abundance"/>
+                    <core:Item key="Color Rating" text="Color Rating"/>
+                    <core:Item key="Habitat" text="Habitat"/>
+                    <core:Item key="Lifespan" text="Lifespan"/>
+                    <core:Item key="Migration Pattern" text="Migration Pattern"/>
+                    <core:Item key="Threat Level" text="Threat Level"/>
+                </items>
+            </Select>
+        </VBox>
+        <!-- Dialog Button -->
+        <beginButton>
+            <Button
+                text="{i18n>confirmButton}"
+                press="onEditDialogConfirm"/>
+        </beginButton>
+        <endButton>
+            <Button
+                text="{i18n>cancelButton}"
+                press="._closeDialog"/>        
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>
